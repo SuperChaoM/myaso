@@ -1,0 +1,27 @@
+<include file="Public/xheader" />
+<!-- PAGE CONTENT BEGINS -->
+<form class="form-horizontal" role="form" action="{:U('img')}" method="post">
+	<table style="width: 100%">
+		<tr>
+			<td style="width: 100px;">
+				分类封面<span class="red">*</span>:
+			</td>
+			<td>
+				{:UpImage("img_url",200,100,$vo['img_url'])}
+				建议适配尺寸750x240,图片小于500k(最大不超过1M)
+                <input type="hidden" name="category_id" value="{$vo['category_id']}">
+			</td>
+		</tr>
+	</table>
+
+    <div class="col-md-offset-2 col-md-9">
+        <button class="btn btn-info" type="submit">
+            <i class="icon-ok bigger-110"></i>
+            提交
+        </button>
+    </div>
+</form>
+
+
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter" />

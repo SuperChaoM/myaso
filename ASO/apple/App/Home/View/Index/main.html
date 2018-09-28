@@ -1,0 +1,175 @@
+<include file="Public/xheader" />
+<!-- PAGE CONTENT BEGINS -->
+<div class="cf">
+	<a class="btn btn-info" href="{:U('add')}" value="">新增链接</a>
+</div>
+<div class="space-4"></div>
+
+<form class="form-horizontal" role="form" action="{:U('update')}" method="post">
+	<div class="form-group">
+		<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 用户名 </label>
+		<div class="col-sm-9">
+			<input type="text" disabled="disabled" class="rcol-xs-10 col-sm-5" value="{$member.user}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">无法修改</span>
+											</span>
+		</div>
+	</div>
+
+	<div class="space-4"></div>
+
+	<div class="form-group">
+		<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 用户密码 </label>
+		<div class="col-sm-9">
+			{:IForm::input(array('field' => 'pw', 'holder' => 'pw', 'remind' => '不修改'))}
+		</div>
+	</div>
+
+	<div class="space-4"></div>
+
+	<div class="form-group">
+		<label class="col-sm-1 control-label no-padding-right" for="form-field-4"> 性别 </label>
+		<div class="col-sm-9">
+			{:IForm::checkbox(array('field' => 'sex', 'options' => array( '保密', '男', '女')))}
+		</div>
+	</div>
+
+	<div class="space-4"></div>
+
+	<div class="form-group">
+		<label class="col-sm-1 control-label no-padding-right" for="id-date-picker-1">生日</label>
+		<div class="col-xs-9 col-sm-9">
+			<div class="input-group col-xs-5">
+				<input class="form-control date" id="birthday" name="birthday" value="{$member['birthday']|date="Y-m-d",###}" type="text" />
+					<span class="input-group-addon">
+						<i class="ace-icon fa fa-calendar bigger-110"></i>
+					</span>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-1 control-label no-padding-right" >生日</label>
+		<div class="col-xs-9 col-sm-9">
+			<div class="input-group col-xs-5">
+				{:IForm::date(array('field' => 'kkk'))}
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 是否启用 </label>
+		<div class="control-label no-padding-left col-sm-1">
+			<label>
+				<input name="status" id="status" checked="checked" class="ace ace-switch ace-switch-2" type="checkbox" />
+				<span class="lbl"></span>
+			</label>
+		</div>
+		<span class="help-inline col-xs-12 col-sm-7">
+				<span class="middle">YES，启用；NO，禁用</span>
+		</span>
+		<label>
+			<input name="rules[]" class="ace ace-checkbox-2 father" type="checkbox" value="{$v['id']}"/>
+			<span class="lbl"> {$v['title']}</span>
+		</label>
+	</div>
+
+	<div class="space-4"></div>
+
+	<div class="form-group">
+		<label class="col-sm-1 control-label no-padding-right" for="form-field-6"> 电话号码 </label>
+		<div class="col-sm-9">
+			<input type="text" name="phone" id="phone" placeholder="电话号码" class="col-xs-10 col-sm-5" value="{$member['phone']}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle"></span>
+											</span>
+		</div>
+	</div>
+
+	<div class="space-4"></div>
+	<div class="form-group">
+		<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 页面提示</label>
+		<div class="col-sm-9">
+			{:IForm::rich_text('tips', true)}
+		</div>
+	</div>
+
+	<div class="space-4"></div>
+	<div class="form-group">
+		<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 文章内容 </label>
+		<div class="col-sm-9">
+			{:IForm::rich_text('content')}
+		</div>
+	</div>
+
+
+	<div class="col-md-offset-2 col-md-9">
+		<button class="btn btn-info" type="submit">
+			<i class="icon-ok bigger-110"></i>
+			提交
+		</button>
+
+		&nbsp; &nbsp; &nbsp;
+		<button class="btn" type="reset">
+			<i class="icon-undo bigger-110"></i>
+			重置
+		</button>
+	</div>
+</form>
+
+<div id="container" style="position: relative;">
+	<a class="btn btn-default btn-lg " id="pickfiles" href="#" style="position: relative; z-index: 1;">
+		<i class="glyphicon glyphicon-plus"></i>
+		<span>选择文件</span>
+	</a>
+	<div id="html5_1aipg56fm1734bppt69p4e96b3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 0px; width: 171px; height: 46px; overflow: hidden; z-index: 0;">
+		<input id="html5_1aipg56fm1734bppt69p4e96b3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="">
+	</div>
+</div>
+
+<script src="__PUBLIC__/qwadmin/js/qiniu/plupload.full.min.js"></script>
+<script src="__PUBLIC__/qwadmin/js/qiniu/qiniu.js"></script>
+<script>
+	//引入Plupload 、qiniu.js后
+	var uploader = Qiniu.uploader({
+		runtimes: 'html5,html4',    //上传模式,依次退化
+		browse_button: 'pickfiles',       //上传选择的点选按钮，**必需**
+		uptoken_url: '{:U("token")}',            //Ajax请求upToken的Url，**强烈建议设置**（服务端提供）
+		unique_names: true, // 默认 false，key为文件名。若开启该选项，SDK为自动生成上传成功后的key（文件名）。
+		domain: '{$Think.CONFIG.qiniu_url}',   //bucket 域名，下载资源时用到，**必需**
+		get_new_uptoken: false,  //设置上传文件的时候是否每次都重新获取新的token
+		container: 'container',           //上传区域DOM ID，默认是browser_button的父元素，
+		max_file_size: '100mb',           //最大文件体积限制
+		flash_swf_url: 'Moxie.swf',  //引入flash,相对路径
+		max_retries: 3,                   //上传失败最大重试次数
+		dragdrop: true,                   //开启可拖曳上传
+		drop_element: 'container',        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
+		chunk_size: '4mb',                //分块上传时，每片的体积
+		auto_start: true,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传
+		init: {
+			'FileUploaded': function(up, file, info) {
+				 var domain = up.getOption('domain');
+				 var res = $.parseJSON(info);
+				 var sourceLink = domain + res.key; //获取上传成功后的文件的Url
+				 console.log(sourceLink);
+				alert(sourceLink);
+			},
+			'Error': function(up, err, errTip) {
+				//上传出错时,处理相关的事情
+				alert('上传错误');
+			}
+		}
+	});
+	var imgLink = Qiniu.watermark({
+		mode: 2,  // 文字水印
+		text: 'hello world !', // 水印文字，mode = 2 时 **必需**
+		dissolve: 50,          // 透明度，取值范围1-100，非必需，下同
+		gravity: 'SouthWest',  // 水印位置，同上
+		fontsize: 500,         // 字体大小，单位: 缇
+		font : '黑体',          // 水印文字字体
+		dx: 100,  // 横轴边距，单位:像素(px)
+		dy: 100,  // 纵轴边距，单位:像素(px)
+		fill: '##FFF000'        // 水印文字颜色，RGB格式，可以是颜色名称
+	}, key);
+</script>
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter" />

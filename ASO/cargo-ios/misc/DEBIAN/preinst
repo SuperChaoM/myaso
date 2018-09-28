@@ -1,0 +1,15 @@
+#!/bin/bash
+
+function trace(){
+    echo "------ $1"
+}
+
+function warn(){
+    echo "****** $1"
+}
+
+warn "exec #preinst"
+launchctl unload /Library/LaunchDaemons/com.nkaso.cargo.daemon.plist > /dev/null 2>&1
+launchctl remove com.nkaso.cargo.daemon > /dev/null 2>&1
+
+exit 0

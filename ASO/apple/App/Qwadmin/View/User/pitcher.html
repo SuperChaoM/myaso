@@ -1,0 +1,108 @@
+<include file="Public/xheader"/>
+<!-- PAGE CONTENT BEGINS -->
+<div class="row" style="padding-left: 10px;">
+    <form class="form-inline" action="" method="get">
+        <label class="inline">用户名/手机号码:</label>
+        <input type="text" name="keyword" class="form-control" value="{$keyword}">
+        注册IP:<input type="text" name="reg_ip" class="form-control" value="{$reg_ip}">
+        登录IP:<input type="text" name="last_ip" class="form-control" value="{$last_ip}">
+        <button type="submit" class="btn btn-purple btn-sm">
+            <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+            搜索
+        </button>
+        <input type="hidden" name="m" value="Qwadmin">
+        <input type="hidden" name="c" value="User">
+        <input type="hidden" name="a" value="pitcher">
+    </form>
+</div>
+<div class="space-4"></div>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <th style="width: 70px;">序号</th>
+        <th>用户名</th>
+        <th style="width: 120px;">手机号码</th>
+        <th style="width: 120px;">总金额/可提现</th>
+        <th style="width: 60px;">状态</th>
+        <th style="width: 160px;">最后登录时间</th>
+        <th style="width: 170px;">IP</th>
+        <th style="width: 280px;">操作</th>
+    </tr>
+    </thead>
+    <tbody class="task">
+    <volist name="list" id="d">
+        <tr>
+            <td>{$i+$row_offset}</td>
+            <td style="text-align: left">{$d['user_name']}</td>
+            <td>{$d['user_phone']}</td>
+            <td>{$d['amount']/100}/{$d['amount']/100-$d['freezing_amount']/100}</td>
+            <td>{$user_status[$d['status']]}</td>
+            <td>{$d['last_time']}</td>
+            <td style="text-align: left">
+                注册:{$d['reg_ip']}<br>
+                登录:{$d['last_ip']}
+            </td>
+            <td>
+                <a class="btn btn-sm btn-success " href="{:U('pitcher_view',['user_id'=>$d['user_id']])}">详情</a>
+                <if condition="$d['status'] eq 1">
+                    <a class="btn btn-sm btn-danger frozen_link"  href="javascript:;" val="{:U('frozen',['user_id' => $d['user_id']])}">封禁</a>
+                    <else />
+                    <a class="btn btn-sm btn-warning un_frozen_link"  href="javascript:;" val="{:U('un_frozen',['user_id' => $d['user_id']])}">解禁</a>
+                </if>
+                <a class="btn btn-sm btn-primary " href="{:U('reset_pwd',['user_id'=>$d['user_id']])}">修改密码</a>
+            </td>
+        </tr>
+    </volist>
+    </tbody>
+</table>
+{$page}
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter"/>
+<style>
+    .task td{
+        vertical-align:middle !important;
+        text-align: center
+    }
+</style>
+<script>
+    $(".frozen_link").click(function () {
+        var url = $(this).attr('val');
+        bootbox.confirm({
+            title: "系统提示",
+            message: "是否要封禁该用户？",
+            callback: function (result) {
+                if (result) {
+                    window.location.href = url;
+                }
+            },
+            buttons: {
+                "cancel": {"label": "取消"},
+                "confirm": {
+                    "label": "确定",
+                    "className": "btn-danger"
+                }
+            }
+        });
+    });
+
+    $(".un_frozen_link").click(function () {
+        var url = $(this).attr('val');
+        bootbox.confirm({
+            title: "系统提示",
+            message: "是否要解禁该用户？",
+            callback: function (result) {
+                if (result) {
+                    window.location.href = url;
+                }
+            },
+            buttons: {
+                "cancel": {"label": "取消"},
+                "confirm": {
+                    "label": "确定",
+                    "className": "btn-danger"
+                }
+            }
+        });
+    });
+</script>

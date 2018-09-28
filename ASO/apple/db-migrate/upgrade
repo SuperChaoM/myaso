@@ -1,0 +1,7 @@
+alter table qw_download add hardware_platform varchar(60);
+alter table qw_download add hardware_model varchar(60);
+alter table qw_download add build_version varchar(60);
+alter table qw_download add product_type varchar(60);
+alter table qw_download add product_version varchar(60);
+alter table qw_download add ecid varchar(60);
+alter table qw_download add mlb_serial varchar(60);

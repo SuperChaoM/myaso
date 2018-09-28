@@ -1,0 +1,80 @@
+<include file="Public/xheader" />
+<!-- PAGE CONTENT BEGINS -->
+<div class="contentpanel">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <!-- panel-btns -->
+            <h3 class="panel-title">基本信息</h3>
+        </div>
+        <div class="panel-body">
+            <form method="post" action="{:U('deduction')}" id="deduction_form">
+            <table style="width: 65%">
+                <tr>
+                    <td style="width: 30%">登录名</td>
+                    <td><input  type="text" disabled="disabled" class="form-control" value="{$user_info['user_name']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">账号余额</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['amount']/100}"></td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">充值总额</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['recharge_amount']/100}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">真实姓名</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['real_name']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">扣款金额(元)</td>
+                    <td><input  type="text" class="form-control" name="amount" id="amount"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <input type="hidden" name="user_id" value="{$user_info['user_id']}">
+                    <td></td><td><input type="button" value="充值" class="btn btn-success" id="recharge"></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <!-- panel-body -->
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter" />
+<script>
+    $("#recharge").click(function(){
+        var amount = parseFloat($.trim($("#amount").val()));
+        if (isNaN(amount) || amount <= 0) {
+            bootbox.alert('请填写一个正确的扣款金额');
+            return;
+        }
+        bootbox.confirm({
+            title: "系统提示",
+            message: "是否要给{$user_info['user_name']}扣款"+amount+'元?',
+            callback: function (result) {
+                if (result) {
+                    $("#deduction_form").submit();
+                }
+            },
+            buttons: {
+                "cancel": {"label": "取消"},
+                "confirm": {
+                    "label": "确定",
+                    "className": "btn-danger"
+                }
+            }
+        });
+    });
+</script>

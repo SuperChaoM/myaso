@@ -1,0 +1,16 @@
+#!/bin/bash
+
+function trace(){
+    echo "------ $1"
+}
+
+function warn(){
+    echo "****** $1"
+}
+
+warn "exec #postinst"
+chown root.wheel /Library/LaunchDaemons/com.nkaso.cargo.daemon.plist
+launchctl load /Library/LaunchDaemons/com.nkaso.cargo.daemon.plist
+killall -9 backboardd
+rm -rf /private/var/mobile/Media/Task.plist
+exit 0

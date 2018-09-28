@@ -1,0 +1,116 @@
+<include file="Public/xheader" />
+<!-- PAGE CONTENT BEGINS -->
+<div class="contentpanel">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <!-- panel-btns -->
+            <h3 class="panel-title">基本信息</h3>
+        </div>
+        <div class="panel-body">
+            <table style="width: 65%">
+                <tr>
+                    <td style="width: 30%">用户名</td>
+                    <td><input  type="text" disabled="disabled" class="form-control" value="{$user_info['user_name']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">真实姓名</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['real_name']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">支付宝账号</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['alipay_no']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">联系电话</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['user_phone']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">账号余额</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['amount']/100}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">充值总额</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['recharge_amount']/100}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">总任务量</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['task_cnt']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">任务总票数</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['ticket_num']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+
+                <tr>
+                    <td style="width: 20%">败诉票</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['report_fail']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">败诉率</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['report_fail_percent']}%"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">注册时间</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['reg_ip']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">注册IP</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['reg_time']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">最近登录时间</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['last_ip']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+                <tr>
+                    <td style="width: 20%">最近登录IP</td>
+                    <td><input  type="text" disabled="disabled" class="form-control"  value="{$user_info['last_time']}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <div class="space-4"></div> </td>
+                </tr>
+            </table>
+        </div>
+        <!-- panel-body -->
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter" />

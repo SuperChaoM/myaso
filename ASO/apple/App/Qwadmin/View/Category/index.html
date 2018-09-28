@@ -1,0 +1,70 @@
+<include file="Public/xheader"/>
+<!-- PAGE CONTENT BEGINS -->
+<div class="row" style="padding-left: 10px;">
+    <a href="{:U('add')}"  class="btn btn-info" style="margin: 5px 0; float: left">新增</a>
+</div>
+<div class="space-4"></div>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <th style="width: 70px;">序号</th>
+        <th>标题</th>
+        <th style="width: 300px;">描述</th>
+        <th style="width: 120px;">排序</th>
+        <th style="width: 150px;">操作</th>
+    </tr>
+    </thead>
+    <tbody class="task">
+    <volist name="list" id="d">
+        <tr>
+            <td>{$i+$row_offset}</td>
+            <td>
+                <img src="{$d['img_url']}" style="height: 40px;width: 80px;">
+                {$d['category_name']}
+            </td>
+            <td>
+                {$d['summary']}
+            </td>
+            <td>
+                {$d['sort']}
+            </td>
+            <td>
+                <a class="btn btn-sm btn-success " href="{:U('edit',['category_id'=>$d['category_id']])}">编辑</a>
+                <a class="btn btn-sm btn-danger del_link"  href="javascript:;" val="{:U('del',['category_id' => $d['category_id']])}">删除</a>
+            </td>
+        </tr>
+    </volist>
+    </tbody>
+</table>
+{$page}
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter"/>
+<style>
+    .task td{
+        vertical-align:middle !important;
+        text-align: center
+    }
+</style>
+<script>
+    $(".del_link").click(function () {
+        var url = $(this).attr('val');
+        bootbox.confirm({
+            title: "系统提示",
+            message: "是否要删除该分类？",
+            callback: function (result) {
+                if (result) {
+                    window.location.href = url;
+                }
+            },
+            buttons: {
+                "cancel": {"label": "取消"},
+                "confirm": {
+                    "label": "确定",
+                    "className": "btn-danger"
+                }
+            }
+        });
+    });
+
+</script>

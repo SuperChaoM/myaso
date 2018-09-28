@@ -1,0 +1,91 @@
+<include file="Public/xheader"/>
+<div style="text-align: center;font-size: 2rem">
+	工作计划统计(今天总量:{$sum_num})
+</div>
+<!-- PAGE CONTENT BEGINS -->
+<form class="form-horizontal" role="form" action="{:U('save_plain')}" method="post">
+<div class="container-fluid">
+	<div class="row" style="margin-bottom: 1rem;">
+		<div id="visit" style="width: 900px;height:250px;"></div>
+	</div>
+	<div class="row" id="plain_list">
+
+	</div>
+</div>
+</form>
+<div style="display: none">
+	<div class="col-xs-6 col-sm-3" id="task_tpl">
+		<table class="table table-bordered"><tr>
+			<td><input type="number" class="task_num" placeholder="输入任务数量"></td></tr>
+			<tr>
+				<td>
+					<div style="text-align: center" class="time">00:00</div>
+				</td>
+			</tr></table>
+	</div>
+</div>
+<style>
+	.task_num {
+		width: 100%;
+	}
+</style>
+<script>
+	function insert_plain(time, num, index) {
+		var $plain = $("#task_tpl").clone().attr('id', index);
+		$plain.find('.time').text(time);
+		$plain.find('.task_num').attr('name', 'plain['+time+']').val(num);
+		$("#plain_list").append($plain);
+	}
+	work_plain = {$work_plain};
+	var index = 0;
+	for(var t in work_plain) {
+		var num = work_plain[t];
+		insert_plain(t, num, index);
+		index++;
+	}
+
+	$("#clear_all").click(function() {
+		$(".task_num").val('');
+	});
+	$("#set_first").click(function() {
+		$(".task_num").val($("#0 .task_num").val());
+	});
+</script>
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter"/>
+<script src="__PUBLIC__/qwadmin/js/echarts.min.js"></script>
+<script type="text/javascript">
+	// 基于准备好的dom，初始化echarts实例
+	var myChart = echarts.init(document.getElementById('visit'));
+
+	// 指定图表的配置项和数据
+	var option = {
+		tooltip: {
+			trigger: 'axis'
+		},
+		legend: {
+			data:['成功数']
+		},
+		grid: {
+			containLabel: true
+		},
+		xAxis: {
+			type: 'category',
+			boundaryGap: false,
+			data: {$plain_x}
+		},
+		yAxis: {
+			type: 'value'
+		},
+		series: [
+			{
+				name:'成功数',
+				type:'line',
+				stack: '总量',
+				data:{$plain_y}
+			}
+		]
+	};
+	// 使用刚指定的配置项和数据显示图表。
+	myChart.setOption(option);
+</script>

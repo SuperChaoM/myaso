@@ -1,0 +1,30 @@
+<include file="Public/xheader"/>
+<!-- PAGE CONTENT BEGINS -->
+
+<form action = "{:U('import_file')}" method ="POST" enctype= "multipart/form-data">
+<table class="table table-striped table-bordered table-hover">
+    <tbody class="task">
+    <tr>
+        <td style="text-align: left">
+            <input type="file" name="file">
+        </td>
+        <td>
+            <input type="submit" name="action" value="上传文件" class="btn btn-primary btn-sm" id="submit">
+            <span id="notice"></span>
+        </td>
+        <td>
+            <p>导入已过检账号密码</p>
+            <p>txt文件,UTF-8格式(中间用一个空格隔开):<pre>邮箱1 密码1 序列号1 IMEI1 蓝牙1 WIFI1 UDID1 ECID1 ProductType1 ProductVersion1
+              BuildVersion1 HardwarePlatform1 HardwareModel1 MLBSerial1 IDFA1
+</pre></p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</form>
+<script>
+    $("#submit").click(function() {
+        $(this).hide();
+        $("#notice").text('正在上传文件...');
+    });
+</script>

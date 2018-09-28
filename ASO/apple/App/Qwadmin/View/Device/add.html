@@ -1,0 +1,33 @@
+<include file="Public/xheader"/>
+<!-- PAGE CONTENT BEGINS -->
+	<form class="form-horizontal" role="form" action="{:U('add')}" method="post">
+	<div class="space-4"></div>
+
+		<div class="form-group">
+			<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 设备ID </label>
+			<div class="col-sm-9">
+				<input type="text" name="device_id" class="rcol-xs-10 col-sm-5" value="{$vo.device_id}" placeholder="触动精灵的设备ID">
+			</div>
+		</div>
+
+		<div class="space-4"></div>
+
+		<div class="form-group">
+			<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 人工编号 </label>
+			<div class="col-sm-9">
+				<input type="text" name="device_num" class="rcol-xs-10 col-sm-5" value="{$vo.device_num}" placeholder="人工编号">
+			</div>
+		</div>
+
+		<div class="space-4"></div>
+
+		<input type="hidden" name="id" value="{$vo['id']}">
+	<div class="col-md-offset-2 col-md-9">
+		<button class="btn btn-info" type="submit">
+			<i class="icon-ok bigger-110"></i>
+			提交
+		</button>
+	</div>
+</form>
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter"/>

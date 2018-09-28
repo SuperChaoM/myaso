@@ -1,0 +1,10 @@
+Package: com.nkaso.cargo.itunesstored
+Name: cargoitunes
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: nkaso
+Author: nkaso
+Section: Tweaks
+Version: 0.0.1-170+debug
+Installed-Size: 104

@@ -1,0 +1,132 @@
+<include file="Public/xheader"/>
+<div style="text-align: center;font-size: 2rem">
+	编辑工作计划 [<span id="sum_num" style="margin: 0 5px;">0 成功数</span>]
+</div>
+<!-- PAGE CONTENT BEGINS -->
+<form class="form-horizontal" role="form" action="{:U('edit')}" method="post">
+	<div class="container-fluid">
+		<div class="row" style="margin-bottom: 1rem;">
+			<div class="col-xs-4 col-sm-2">
+				<input type="hidden" name="tpl_id" value="{$vo['tpl_id']}">
+				<input type="submit" class="btn btn-purple" value="保存工作计划">
+			</div>
+
+			<div class="col-xs-4 col-sm-2">
+				<div class="btn btn-success" id="clear_all">全部清零</div>
+			</div>
+			<div class="col-xs-4 col-sm-2">
+				<div class="btn btn-primary" id="set_first">设置和首个任务一样</div>
+			</div>
+			<div class="col-xs-4 col-sm-2">
+			</div>
+		</div>
+		<div class="row" style="margin-bottom: 1rem;">
+			<div id="visit" style="width: 900px;height:250px;"></div>
+		</div>
+
+		<div class="row" style="margin-bottom: 1rem;   ">
+			<input type="text" name="tpl_name" value="{$vo['tpl_name']}" placeholder="模板名称" style="width: 70%; margin-left: 12px;"
+			>
+		</div>
+		<div class="row" id="plain_list">
+
+		</div>
+	</div>
+</form>
+<div style="display: none">
+	<div class="col-xs-6 col-sm-3" id="task_tpl">
+		<table class="table table-bordered"><tr>
+			<td><input type="number" class="task_num" placeholder="输入任务数量"></td></tr>
+			<tr>
+				<td>
+					<div style="text-align: center" class="time">00:00</div>
+				</td>
+			</tr></table>
+	</div>
+</div>
+<style>
+	.task_num {
+		width: 100%;
+	}
+</style>
+<script>
+	function insert_plain(time, num, index) {
+		var $plain = $("#task_tpl").clone().attr('id', index);
+		$plain.find('.time').text(time);
+		$plain.find('.task_num').attr('name', 'plain['+time+']').val(num);
+		$("#plain_list").append($plain);
+	}
+	work_plain = {$work_plain};
+	var index = 0;
+	for(var t in work_plain) {
+		var num = work_plain[t];
+		insert_plain(t, num, index);
+		index++;
+	}
+
+
+	$("#clear_all").click(function() {
+		$(".task_num").val('');
+		$(".task_num").change();
+	});
+	$("#set_first").click(function() {
+		$(".task_num").val($("#0 .task_num").val());
+		$(".task_num").change();
+	});
+
+	$(".task_num").change(function() {
+		var sum_num = 0;
+		$(".task_num").each(function(i,e) {
+			var $e = $(e);
+			var v  = $e.val();
+			if (v == '') {
+				v = 0;
+			} else {
+				v = parseInt(v);
+			}
+			sum_num += v;
+		});
+		$("#sum_num").html(sum_num + '成功数');
+	});
+	$(function() {
+		$(".task_num").change();
+	});
+</script>
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter"/>
+<script src="__PUBLIC__/qwadmin/js/echarts.min.js"></script>
+<script type="text/javascript">
+	// 基于准备好的dom，初始化echarts实例
+	var myChart = echarts.init(document.getElementById('visit'));
+
+	// 指定图表的配置项和数据
+	var option = {
+		tooltip: {
+			trigger: 'axis'
+		},
+		legend: {
+			data:['成功数']
+		},
+		grid: {
+			containLabel: true
+		},
+		xAxis: {
+			type: 'category',
+			boundaryGap: false,
+			data: {$plain_x}
+		},
+		yAxis: {
+			type: 'value'
+		},
+		series: [
+			{
+				name:'成功数',
+				type:'line',
+				stack: '总量',
+				data:{$plain_y}
+			}
+		]
+	};
+	// 使用刚指定的配置项和数据显示图表。
+	myChart.setOption(option);
+</script>

@@ -1,0 +1,68 @@
+<include file="Public/xheader"/>
+<!-- PAGE CONTENT BEGINS -->
+	<form class="form-horizontal" role="form" action="{:U('add')}" method="post">
+	<div class="space-4"></div>
+
+		<div class="form-group">
+			<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 任务名称 </label>
+			<div class="col-sm-9">
+				<input type="text" name="work_name" class="rcol-xs-10 col-sm-5" value="{$vo.work_name}" placeholder="任务名称">
+			</div>
+		</div>
+
+		<div class="space-4"></div>
+
+		<div class="form-group">
+			<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> app_id </label>
+			<div class="col-sm-9">
+				<input type="number" name="app_id" class="rcol-xs-10 col-sm-5" value="{$vo.app_id}" placeholder="app_id">
+				<a href="https://aso100.com/" target="_blank" style="margin-left: 50px;">app_id查找</a>
+			</div>
+		</div>
+
+		<div class="space-4"></div>
+		<div class="form-group">
+			<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 应用包名 </label>
+			<div class="col-sm-9">
+				<input type="text" name="app_name" class="rcol-xs-10 col-sm-5" value="app_name" placeholder="app_name">
+			</div>
+		</div>
+
+		<div class="space-4"></div>
+		<div class="form-group" style="display: none">
+			<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 成功数量 </label>
+			<div class="col-sm-9">
+				<input type="number" name="down_num" class="rcol-xs-10 col-sm-5" value="0" placeholder="成功数量">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 工作计划模板 </label>
+			<div class="col-sm-9">
+				{:IForm::select(['field'=>'tpl_id', 'options' => $tpl_list, 'options_key' =>'tpl_id,tpl_name',
+				'remind'=>'选择模板', 'width' =>'400px;'],$vo['tpl_id'])}
+			</div>
+		</div>
+
+
+		<div class="space-4"></div>
+
+		<div class="form-group">
+			<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 关键词 </label>
+			<div class="col-sm-9">
+				<input type="text" name="keyword" class="rcol-xs-10 col-sm-5" value="{$vo.keyword}" placeholder="关键词，一个个子任务逗号隔开">
+			</div>
+		</div>
+
+		<div class="space-4"></div>
+
+		<input type="hidden" name="id" value="{$vo['id']}">
+	<div class="col-md-offset-2 col-md-9">
+		<button class="btn btn-info" type="submit">
+			<i class="icon-ok bigger-110"></i>
+			提交
+		</button>
+	</div>
+</form>
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter"/>

@@ -1,0 +1,43 @@
+<include file="Public/xheader"/>
+<!-- PAGE CONTENT BEGINS -->
+<form method="post" action="{:U('wx_config')}">
+    <table style="width: 100%">
+        <volist name="list" id="vo">
+            <tr>
+                <td style="width: 10%">{$vo['name']}:</td>
+                <td>
+
+                    <if condition="$vo['type']=='text'">
+                        <textarea name="{$vo['key']}" style="width: 80%;height: 200px;">{$vo['value']}</textarea>
+                    </if>
+                    <if condition="$vo['type']=='img'">
+                        {:UpImage($vo['key'],100,100,$vo['value'])}
+                    </if>
+                    <br>
+                    <span class="red">{$vo['note']}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="space-4"></div>
+                </td>
+            </tr>
+        </volist>
+    </table>
+
+    <div class="col-md-offset-2 col-md-9">
+        <button class="btn btn-info" type="submit">
+            <i class="icon-ok bigger-110"></i>
+            提交
+        </button>
+
+        &nbsp; &nbsp; &nbsp;
+        <button class="btn" type="reset">
+            <i class="icon-undo bigger-110"></i>
+            重置
+        </button>
+    </div>
+</form>
+
+<!-- PAGE CONTENT ENDS -->
+<include file="Public/xfooter"/>

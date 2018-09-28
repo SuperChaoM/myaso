@@ -1,0 +1,9 @@
+Package: com.nkaso.cargo
+Name: ASO大神
+Depends: kr.iolate.simulatetouch, com.rpetrich.rocketbootstrap (>= 1.0.2) | firmware (<< 7.0)
+Version: 11.25.0
+Architecture: iphoneos-arm
+Description: ASO大神
+Maintainer: ASO大神
+Author: ASO大神
+Section: ASO
