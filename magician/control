@@ -1,0 +1,9 @@
+Package: com.ytboss.magician
+Name: magician
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: One to more...
+Maintainer: ytboss
+Author: ytboss
+Section: Tweaks

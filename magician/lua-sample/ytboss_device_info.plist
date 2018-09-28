@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BluetoothAddress</key>
+	<string>0c510163bcdd</string>
+	<key>BuildVersion</key>
+	<string>15A432</string>
+	<key>HWModelStr</key>
+	<string>N71AP</string>
+	<key>HardwarePlatform</key>
+	<string>s8000</string>
+	<key>IDFA</key>
+	<string>A2D9E42E-5C18-DE98-2F00-319234667EF8</string>
+	<key>InternationalMobileEquipmentIdentity</key>
+	<string>355782070152024</string>
+	<key>MLBSerialNumber</key>
+	<string>F3X617412EVG2KNF</string>
+	<key>ProductType</key>
+	<string>iPhone8,1</string>
+	<key>ProductVersion</key>
+	<string>11.0.3</string>
+	<key>SerialNumber</key>
+	<string>F17RMEU6GRYD</string>
+	<key>UniqueChipID</key>
+	<string>0009446C386B8226</string>
+	<key>UniqueDeviceID</key>
+	<string>d84d22334af39e3bfa406068810d5feb8536732f</string>
+	<key>WifiAddress</key>
+	<string>0c510163bcdc</string>
+</dict>
+</plist>
