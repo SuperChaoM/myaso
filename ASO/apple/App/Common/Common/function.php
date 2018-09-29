@@ -269,11 +269,13 @@ define('AES_KEY', 'abc1237142749731');
 
 //系统加密
 function sys_encrypt($data) {
-    return base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, AES_KEY, $data, MCRYPT_MODE_CBC, AES_KEY));
+    //return base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_128, AES_KEY, $data, MCRYPT_MODE_CBC, AES_KEY));
+    return base64_encode(openssl_encrypt(MCRYPT_RIJNDAEL_128, AES_KEY, $data, MCRYPT_MODE_CBC, AES_KEY));
 }
 //系统解密
 function sys_decrypt($data) {
-    return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, AES_KEY, base64_decode($data), MCRYPT_MODE_CBC, AES_KEY));
+    //return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, AES_KEY, base64_decode($data), MCRYPT_MODE_CBC, AES_KEY));
+    return trim(openssl_decrypt(MCRYPT_RIJNDAEL_128, AES_KEY, base64_decode($data), MCRYPT_MODE_CBC, AES_KEY));
 }
 
 /**

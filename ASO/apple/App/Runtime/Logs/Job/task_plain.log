@@ -2418,3 +2418,6 @@
 2018-01-22 11:10:01 0.0.0.0  INFO: work_start:11:10
 2018-01-22 11:10:01 0.0.0.0  INFO: 17-金花棋牌游戏-欢乐炸金花电玩城-扎金花暂时无任务
 2018-01-22 11:10:01 0.0.0.0  INFO: work_end
+2018-09-21 22:01:23 0.0.0.0 /index.php?m=Job&c=index&a=task_plain INFO: work_start:22:01
+2018-09-21 22:01:23 0.0.0.0 /index.php?m=Job&c=index&a=task_plain INFO: 20-zjtest-心里暂时无任务
+2018-09-21 22:01:23 0.0.0.0 /index.php?m=Job&c=index&a=task_plain INFO: work_end

@@ -22,11 +22,14 @@ return array(
 	'DB_HOST'   => '127.0.0.1', // 服务器地址
 	'DB_NAME'   => 'apple', // 数据库名
 	'DB_USER'   => 'root', // 用户名
-	'DB_PWD'    => '6116960b3b', // 密码
+	'DB_PWD'    => 'a', // 密码
 
 	//----------------no sql------------------
 	"MC_HOST" => '127.0.0.1',
 	"MC_PORT" => 11211,
 	"REDIS_HOST" => '127.0.0.1',
 	"REDIS_PORT" => 6379,
+
+    //-------------zjtest------
+    //'SHOW_PAGE_TRACE'=>true, // 显示页面Trace信息
 );
