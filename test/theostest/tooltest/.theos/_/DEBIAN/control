@@ -1,0 +1,11 @@
+Package: com.embzheng.tooltest
+Name: tooltest
+Depends: 
+Architecture: iphoneos-arm
+Description: An awesome tool of some sort!!
+Maintainer: zj
+Author: zj
+Section: System
+Tag: role::hacker
+Version: 0.0.1-4+debug
+Installed-Size: 68
