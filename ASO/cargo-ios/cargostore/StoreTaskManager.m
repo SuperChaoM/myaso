@@ -5,6 +5,8 @@
 #import <notify.h>
 #import <rocketbootstrap/rocketbootstrap.h>
 #import <AppSupport/CPDistributedMessagingCenter.h>
+//zjadd
+#import <objc/message.h>
 
 @interface StoreTaskManager() {
     CPDistributedMessagingCenter *_mc;
