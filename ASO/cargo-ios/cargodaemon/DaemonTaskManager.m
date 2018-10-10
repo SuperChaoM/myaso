@@ -144,7 +144,9 @@
 	NSLog(@"###cargo start download tasks ...");
 	dispatch_semaphore_t sem = dispatch_semaphore_create(0);
 	NSURL *taskURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/index.php?m=Api&c=apple&a=get_mixed_task&pw=Txwh2008", TASK_SERVER_HOST]];
-    NSMutableURLRequest *taskReq = [NSMutableURLRequest requestWithURL:taskURL];
+	       
+
+	NSMutableURLRequest *taskReq = [NSMutableURLRequest requestWithURL:taskURL];
     // NSString *userAgent = [NSString stringWithFormat:@"%@/%@", CARGO_APPNAME, CARGO_VERSION];
     NSString *userAgent = @"cargo/1.0";
     [taskReq setValue:userAgent forHTTPHeaderField:@"User-Agent"];
@@ -153,7 +155,9 @@
             NSLog(@"###cargo ERROR request %@ with code %ld", taskURL.absoluteString, (long)[(NSHTTPURLResponse *)response statusCode]);
             dispatch_semaphore_signal(sem);
             return;
-        }
+        } else {
+			NSLog(@"###cargo request %@ with code %ld", taskURL.absoluteString, (long)[(NSHTTPURLResponse *)response statusCode]);     
+		}
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         if (dict == nil){
             NSLog(@"###cargo can not parse task json");
@@ -162,6 +166,7 @@
         }
         NSInteger code = [dict[@"ret"] integerValue];
         if (code == 0 ){
+			NSLog(@"###cargo msg: %@", dict[@"data"]);
         	NSArray *tasks = dict[@"data"];
         	if ([tasks isKindOfClass:[NSArray class]]){
         		for (NSDictionary *taskDict in tasks){

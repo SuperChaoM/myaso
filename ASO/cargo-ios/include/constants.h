@@ -11,7 +11,7 @@ static NSString *COPY_RIGHT = @"ASO菜鸟";
 static NSString *BUILD_VERSION = @"版本: iOS10 cargo/181007.222803";
 
 // task server
-static NSString *TASK_SERVER_HOST = @"127.0.0.1";
+static NSString *TASK_SERVER_HOST = @"192.168.1.108";
 
 
 
