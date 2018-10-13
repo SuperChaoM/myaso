@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function trace(){
+    echo "------ $1"
+}
+
+function warn(){
+    echo "****** $1"
+}
+
+warn "exec #prerm"
+
+exit 0

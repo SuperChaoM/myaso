@@ -8,10 +8,10 @@
 #define OVERLAY_VIEW_HEIGHT 180
 
 static NSString *COPY_RIGHT = @"ASO菜鸟";
-static NSString *BUILD_VERSION = @"版本: iOS10 cargo/181007.222803";
+static NSString *BUILD_VERSION = @"版本: iOS10 cargo/181013.102513";
 
 // task server
-static NSString *TASK_SERVER_HOST = @"192.168.1.108";
+static NSString *TASK_SERVER_HOST = @"192.168.1.150";
 
 
 
