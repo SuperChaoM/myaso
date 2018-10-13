@@ -1,7 +1,7 @@
 Package: com.nkaso.cargo
 Name: ASO菜鸟
 Depends: kr.iolate.simulatetouch, com.rpetrich.rocketbootstrap (>= 1.0.2) | firmware (<< 7.0)
-Version: 181013.102513
+Version: 181013.214259
 Architecture: iphoneos-arm
 Description: ASO菜鸟
 Maintainer: ASO菜鸟

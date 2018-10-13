@@ -17,6 +17,7 @@
 
 %new
 - (void)nkcg_goSearch {
+    NSLog(@"###cargo as# nkcg_goSearch");
     NSDictionary *task = [[StoreTaskManager sharedManager] appStore_currentTask];
     if(task != nil){
         UISearchBar *sBar = [self searchBar];

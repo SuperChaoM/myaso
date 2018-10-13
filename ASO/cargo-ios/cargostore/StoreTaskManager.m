@@ -31,6 +31,7 @@
 }
 
 - (NSDictionary *)appStore_currentTask {
+	NSLog(@"###cargo as#get current task");
     return [NSDictionary dictionaryWithContentsOfFile:CG_PATH(@"Task.plist")];
 }
 
@@ -147,7 +148,7 @@
 						break;
 				 }
 			}
-			NSLog(@"###cargo float window index at %d ",flowWindowIndex);
+			NSLog(@"###cargo float window index at %d ",flowWindowIndex);//flowWindowIndex=5
 			int searchBarItemIndex = (flowWindowIndex == -1 || flowWindowIndex < (len-2))?(len-2):(len-3);
 			NSLog(@"###cargo searchBarItem index at %d ",searchBarItemIndex);
       if (searchBarItemIndex >=0 && searchBarItemIndex <= len-1){
@@ -155,12 +156,16 @@
           NSLog(@"###cargo search tab bar is %@", searchTabBarItem);
           [self.tabBarController _tabBarItemClicked:searchTabBarItem];
       }
-
+      NSLog(@"###cargo as# go search");
       // go search
       SEL search = @selector(nkcg_goSearch);
+	  //respondsToSelector:判断方法是否有实现
+	  //performSelector是运行时系统负责去找方法的，在编译时候不做任何校验
       if ([self.searchBarController respondsToSelector:search]){
           [self.searchBarController performSelector:search withObject:nil afterDelay:1];
-      }
+      } else {
+		  NSLog(@"###cargo as# not define nkcg_goSearch");
+	  }
 
       // delegate to ui
       if ([self.delegate respondsToSelector:@selector(delegate_itunesDidAuthenticate:)]){

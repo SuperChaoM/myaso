@@ -19,6 +19,7 @@
 @implementation FloatingWindowViewController
 
 - (void)viewDidLoad {
+	NSLog(@"###cargo as#viewDidLoad");
     [super viewDidLoad];
     [self.view addSubview:self.copyrightLabel];
     [self.view addSubview:self.versionLabel];
