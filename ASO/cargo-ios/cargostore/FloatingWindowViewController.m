@@ -19,7 +19,7 @@
 @implementation FloatingWindowViewController
 
 - (void)viewDidLoad {
-	NSLog(@"###cargo as#viewDidLoad");
+	NSLog(@"###cargo as#FloatingWindowViewController viewDidLoad");
     [super viewDidLoad];
     [self.view addSubview:self.copyrightLabel];
     [self.view addSubview:self.versionLabel];
@@ -29,10 +29,11 @@
 
     NSDictionary *task = [[StoreTaskManager sharedManager] appStore_currentTask];
     if (nil == task){
-        NSLog(@"===yt.cargo-ios=== no task");
+        NSLog(@"###cargo ===yt.cargo-ios=== no task");
         [self updateStatusLabel:@"无任务等待中..." taskStatus:YES];
     }else{
-        NSString *loginLabel = [NSString stringWithFormat:@"[%@]登陆中...",[task objectForKey:@"email"]];
+    	[self updateStatusLabel:@"开始任务" taskStatus:YES];
+        NSString *loginLabel = [NSString stringWithFormat:@"[%@]begin auth...",[task objectForKey:@"email"]];
         [self updateStatusLabel:loginLabel taskStatus:YES];
     }
     [self updateCopyRightLabel:COPY_RIGHT];

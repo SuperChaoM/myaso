@@ -129,13 +129,16 @@
 
 - (void)_handleFinishAuthenticate:(int)ret {
     if (self.authenticateDone){
+		NSLog(@"###cargo _handleFinishAuthenticate authenticateDone");
         return;
     }
 
     self.authenticateDone = YES;
     NSLog(@"###cargo _handleFinishAuthenticate %d", ret);
     if (ret == RET_CODE_OK){
-
+      if ([self.delegate respondsToSelector:@selector(delegate_itunesDidAuthenticate:)]){
+          [self.delegate delegate_itunesDidAuthenticate:@{ @"ok": @(YES), @"msg": @"auth success" }];
+      }
       // click search tab
       NSArray *vcs = [self.tabBarController viewControllers];
       long len = (long)[vcs count];
@@ -155,26 +158,33 @@
           id searchTabBarItem = [vcs[searchBarItemIndex] tabBarItem];
           NSLog(@"###cargo search tab bar is %@", searchTabBarItem);
           [self.tabBarController _tabBarItemClicked:searchTabBarItem];
+		  if ([self.delegate respondsToSelector:@selector(delegate_itunesDidAuthenticate:)]){
+	          [self.delegate delegate_itunesDidAuthenticate:@{ @"ok": @(YES), @"msg": @"click search bar" }];
+	      }
       }
-      NSLog(@"###cargo as# go search");
+      NSLog(@"###cargo as# _handleFinishAuthenticate go search");
       // go search
       SEL search = @selector(nkcg_goSearch);
 	  //respondsToSelector:判断方法是否有实现
 	  //performSelector是运行时系统负责去找方法的，在编译时候不做任何校验
       if ([self.searchBarController respondsToSelector:search]){
-          [self.searchBarController performSelector:search withObject:nil afterDelay:1];
+	  	  NSLog(@"###cargo as# _handleFinishAuthenticate run nkcg_goSearch");
+          //[self.searchBarController performSelector:search withObject:nil afterDelay:1];
+          //zj modify
+          [self.searchBarController performSelector:search];
       } else {
 		  NSLog(@"###cargo as# not define nkcg_goSearch");
 	  }
-
+	 
       // delegate to ui
       if ([self.delegate respondsToSelector:@selector(delegate_itunesDidAuthenticate:)]){
-          [self.delegate delegate_itunesDidAuthenticate:@{ @"ok": @(YES), @"msg": @"登录ok" }];
+          [self.delegate delegate_itunesDidAuthenticate:@{ @"ok": @(YES), @"msg": @"search finish" }];
       }
    }else{
+      NSLog(@"###cargo as# _handleFinishAuthenticate auth faile!");
       // delegate to ui
       if ([self.delegate respondsToSelector:@selector(delegate_itunesDidAuthenticate:)]){
-          [self.delegate delegate_itunesDidAuthenticate:@{ @"ok": @(NO), @"msg": @"登录失败" }];
+          [self.delegate delegate_itunesDidAuthenticate:@{ @"ok": @(NO), @"msg": @"auth faile" }];
       }
 
       [self appStore_markTaskFail:ret];

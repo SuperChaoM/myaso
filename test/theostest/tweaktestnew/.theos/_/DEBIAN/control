@@ -1,9 +1,10 @@
-Package: com.yourcompany.tweaktest2
-Name: tweaktest2
+Package: com.yourcompany.tweaktestnew
+Name: tweaktestnew
 Depends: mobilesubstrate
-Version: 0.0.1
 Architecture: iphoneos-arm
 Description: An awesome MobileSubstrate tweak!
 Maintainer: mymac
 Author: mymac
 Section: Tweaks
+Version: 0.0.1-6+debug
+Installed-Size: 120

@@ -11,7 +11,7 @@
 %hook SpringBoard
 - (void)_menuButtonDown:(id)down
 {
-    NSLog(@"You've pressed home button.");
+    NSLog(@"###cargo tw# _menuButtonDown");
     %orig; // call the original _menuButtonDown:
 }
 
@@ -19,7 +19,7 @@
 - (void)applicationDidFinishLaunching:(id)arg1 {
 	// %log;
 	%orig;
-
+	NSLog(@"###cargo tw# applicationDidFinishLaunching");
 	// messages
 	CPDistributedMessagingCenter *mc = [CPDistributedMessagingCenter centerNamed:MSG_CENTER];
 	rocketbootstrap_distributedmessagingcenter_apply(mc);
@@ -33,7 +33,7 @@
 }
 %new
 - (void)nkcg_launchAppStore {
-	NSLog(@"got MSG_LAUNCH_APPSTORE");
+	NSLog(@"###cargo tw# nkcg_launchAppStore");
 	if ([self respondsToSelector:@selector(launchApplicationWithIdentifier:suspended:)]){
 		[self launchApplicationWithIdentifier:@"com.apple.AppStore" suspended:NO];
 	}

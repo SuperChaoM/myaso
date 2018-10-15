@@ -34,8 +34,9 @@
 
 %new
 - (void)showFloatWindow {
+	NSLog(@"###cargo as#showFloatWindow");
   	UIWindow *win = MSHookIvar<UIWindow *>(self, "_window");
-	NSLog(@"root vc is %@", win.rootViewController);
+	NSLog(@"###cargo root vc is %@", win.rootViewController);
 	UIViewController *rootVC = win.rootViewController;
 	[StoreTaskManager sharedManager].tabBarController = rootVC;
 

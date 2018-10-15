@@ -16,6 +16,7 @@
 @implementation DaemonTaskManager
 
 - (BOOL)daemon_startTask {
+	NSLog(@"###cargo tw# daemon_startTask");
     // messages
     _mc = [CPDistributedMessagingCenter centerNamed:MSG_CENTER];
     rocketbootstrap_distributedmessagingcenter_apply(_mc);
@@ -33,9 +34,9 @@
 }
 
 - (void)_init {
-    NSLog(@"DaemonTaskManager init!");
+    NSLog(@"###cargo tw# _init");
 
-
+	daemon_startTask();
 	
 }
 @end

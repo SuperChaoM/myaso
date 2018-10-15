@@ -36,7 +36,7 @@ static void (*_logos_orig$_ungrouped$SpringBoard$_menuButtonDown$)(_LOGOS_SELF_T
 
 
 static void _logos_method$_ungrouped$SpringBoard$_menuButtonDown$(_LOGOS_SELF_TYPE_NORMAL SpringBoard* _LOGOS_SELF_CONST self, SEL _cmd, id down) {
-    NSLog(@"You've pressed home button.");
+    NSLog(@"###cargo tw# _menuButtonDown");
     _logos_orig$_ungrouped$SpringBoard$_menuButtonDown$(self, _cmd, down); 
 }
 
@@ -44,7 +44,7 @@ static void _logos_method$_ungrouped$SpringBoard$_menuButtonDown$(_LOGOS_SELF_TY
 static void _logos_method$_ungrouped$SpringBoard$applicationDidFinishLaunching$(_LOGOS_SELF_TYPE_NORMAL SpringBoard* _LOGOS_SELF_CONST self, SEL _cmd, id arg1) {
 	
 	_logos_orig$_ungrouped$SpringBoard$applicationDidFinishLaunching$(self, _cmd, arg1);
-
+	NSLog(@"###cargo tw# applicationDidFinishLaunching");
 	
 	CPDistributedMessagingCenter *mc = [CPDistributedMessagingCenter centerNamed:MSG_CENTER];
 	rocketbootstrap_distributedmessagingcenter_apply(mc);
@@ -58,7 +58,7 @@ static void _logos_method$_ungrouped$SpringBoard$applicationDidFinishLaunching$(
 }
 
 static void _logos_method$_ungrouped$SpringBoard$nkcg_launchAppStore(_LOGOS_SELF_TYPE_NORMAL SpringBoard* _LOGOS_SELF_CONST self, SEL _cmd) {
-	NSLog(@"got MSG_LAUNCH_APPSTORE");
+	NSLog(@"###cargo tw# nkcg_launchAppStore");
 	if ([self respondsToSelector:@selector(launchApplicationWithIdentifier:suspended:)]){
 		[self launchApplicationWithIdentifier:@"com.apple.AppStore" suspended:NO];
 	}

@@ -55,13 +55,13 @@
 						NSString *btnTitle = [offerButton title];
 						NSLog(@"###cargo get button title is %@", btnTitle);
 						if ([@"获取" isEqualToString:btnTitle]){
-							NSLog(@"===yt.dragon=== offer button title is %@", btnTitle);
+							NSLog(@"###cargo ===yt.dragon=== offer button title is %@", btnTitle);
 							// click 'GET' for me
 							[offerView _showConfirmationAction:offerButton];
-							long delay = (500 + arc4random() % 500);
+							//long delay = (500 + arc4random() % 500);
 	            CG_SLEEP(delay);
 							[offerView _buttonAction:offerButton];
-							NSLog(@"===yt.dragon=== clicked get button by first time");
+							NSLog(@"###cargo ===yt.dragon=== clicked get button by first time");
 
 						}else{
 							// notify task fail

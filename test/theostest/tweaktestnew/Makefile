@@ -1,8 +1,8 @@
-THEOS_DEVICE_IP = 192.168.1.107
+THEOS_DEVICE_IP = 192.168.124.14
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = tweaktest2
-tweaktest2_FILES = Tweak.xm
+TWEAK_NAME = tweaktestnew
+tweaktestnew_FILES = Tweak.xm
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

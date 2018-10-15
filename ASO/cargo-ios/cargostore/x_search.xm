@@ -17,7 +17,7 @@
 
 %new
 - (void)nkcg_goSearch {
-    NSLog(@"###cargo as# nkcg_goSearch");
+    NSLog(@"###cargo as# x_search nkcg_goSearch");
     NSDictionary *task = [[StoreTaskManager sharedManager] appStore_currentTask];
     if(task != nil){
         UISearchBar *sBar = [self searchBar];
@@ -72,6 +72,7 @@
         NSDictionary *task = [[StoreTaskManager sharedManager] appStore_currentTask];
         NSString *appId = task[@"app_id"];
         if (task == nil){
+			NSLog(@"###cargo as# task is nil");
             return ret;
         }
 
